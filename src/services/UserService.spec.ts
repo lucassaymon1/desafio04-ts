@@ -10,4 +10,19 @@ describe("UserService", () =>{
     expect(mockConsole).toHaveBeenCalledWith("DB atualizado.", mockDb)
     
   })
+
+  it("should delete an user", () => {
+    const mockDbDelete: User[] = [
+      {
+        id: "1",
+        name: "test delete",
+        email: "delete.db@email.com"
+      }
+    ]
+    const userServiceDelete = new UserService(mockDbDelete)
+    const mockConsole = jest.spyOn(global.console, "log")
+
+    userServiceDelete.deleteUser("1")
+    expect(mockConsole).toHaveBeenCalledWith("User deleted from database.", [])
+  })
 })
