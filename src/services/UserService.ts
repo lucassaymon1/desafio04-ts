@@ -55,4 +55,16 @@ export class UserService {
   getAllUsers = () => {
     return this.db
   }
+
+  deleteUser = (id: string) => {
+    const userExists = this.db.some(user => user.id === id)
+
+    if(!userExists) {
+      return false
+    }
+
+    this.db = this.db.filter(user => user.id !== id)
+    console.log("User deleted form database.", this.db)
+    return true
+  }
 }
