@@ -46,4 +46,18 @@ export class UserController{
     response.status(200).json(users)
   }
 
+  deleteUser = (request: Request, response: Response) => {
+    const {id} = request.params
+    console.log(id)
+    
+    const isDeleted = this.userService.deleteUser(id)
+
+    if(!isDeleted){
+      response.status(401).json({message: 'Error. The provided user does not exist.'})
+    }
+
+    response.status(200).json({message: 'User successfully deleted.'})
+
+  }
+
 }
