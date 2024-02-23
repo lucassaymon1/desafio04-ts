@@ -64,7 +64,7 @@ export class UserService {
     }
 
     this.db = this.db.filter(user => user.id !== id)
-    console.log("User deleted form database.", this.db)
+    console.log("User deleted from database.", this.db)
     return true
   }
 }
